@@ -188,11 +188,34 @@ export default function CentralProducts() {
   const closeModal = () => { setModal(false); setForm(BLANK); setEditId(null); setScannerOpen(false); };
   const handleSave = () => { if (!validate()) return; saveMutation.mutate({ ...form, mrp: +form.mrp }); };
 
-  // Camera scan: barcode goes into form field, scanner closes
-  const handleScan = (code) => {
+  // Camera scan OR manual barcode: look up in central catalog and auto-fill.
+  const handleScan = async (code) => {
     setScannerOpen(false);
-    set('barcode', code);
-    toast.success(`বারকোড স্ক্যান হয়েছে: ${code}`);
+    const bc = String(code).trim();
+    set('barcode', bc);
+    if (!bc) return;
+
+    try {
+      const res = await api.get(`/admin/central/barcode/${encodeURIComponent(bc)}`);
+      const p = res.data?.data;
+      if (p) {
+        // Already exists → fill all fields and switch to edit mode
+        setForm({
+          name:     p.name || '',
+          company:  p.company || '',
+          category: p.category || '',
+          barcode:  p.barcode || bc,
+          unit:     p.unit || 'pcs',
+          mrp:      String(p.mrp || ''),
+        });
+        setEditId(p._id);
+        toast(`📋 "${p.name}" — এই পণ্য আগে থেকেই আছে`, { icon: '✅', duration: 5000 });
+      } else {
+        toast(`🆕 নতুন বারকোড — এই পণ্য আগে নেই`, { duration: 4000 });
+      }
+    } catch (err) {
+      toast.error('বারকোড যাচাই ব্যর্থ।');
+    }
   };
 
   return (
@@ -321,6 +344,8 @@ export default function CentralProducts() {
                   </label>
                   <div className="flex gap-2">
                     <input value={form.barcode} onChange={e => set('barcode', e.target.value)}
+                      onBlur={e => { if (!editId) { const v = e.target.value.trim(); if (v) handleScan(v); } }}
+                      onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); const v = e.target.value.trim(); if (v && !editId) handleScan(v); } }}
                       placeholder="স্ক্যান করুন বা লিখুন…"
                       disabled={!!editId}
                       className={`flex-1 bg-surface-high border rounded-xl px-4 py-3 text-body-md font-mono text-primary tracking-widest focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder:font-sans placeholder:tracking-normal placeholder:text-on-surface-var/50 ${editId ? 'opacity-60 cursor-not-allowed' : ''} ${errors.barcode ? 'border-error' : 'border-outline-var'}`} />
