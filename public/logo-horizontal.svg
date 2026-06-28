@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 130" width="620" height="130">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#0d1f35"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00c896"/>
+    </linearGradient>
+    <linearGradient id="dg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="620" height="130" rx="22" fill="url(#bg)"/>
+
+  <!-- === ICON BOX === -->
+  <rect x="14" y="14" width="102" height="102" rx="20" fill="rgba(0,212,170,0.08)" stroke="rgba(0,212,170,0.2)" stroke-width="1.5"/>
+
+  <!-- Building wall -->
+  <rect x="26" y="60" width="78" height="50" rx="4" fill="#0f2218"/>
+
+  <!-- Roof -->
+  <polygon points="22,62 65,36 108,62" fill="url(#dg)" filter="url(#glow)"/>
+  <rect x="22" y="58" width="86" height="8" rx="3" fill="url(#green)"/>
+
+  <!-- Flag -->
+  <rect x="62" y="24" width="3" height="36" rx="1" fill="#1a3a2a"/>
+  <path d="M65 24 L82 30 L65 36 Z" fill="url(#green)"/>
+
+  <!-- Sign board -->
+  <rect x="28" y="66" width="74" height="16" rx="3" fill="#061510" stroke="#00d4aa" stroke-width="1"/>
+  <text x="65" y="78" font-family="Arial Black" font-size="8" font-weight="900"
+        text-anchor="middle" fill="#00ffcc" filter="url(#glow)">MiniBazar</text>
+
+  <!-- Windows -->
+  <rect x="28" y="86" width="22" height="18" rx="3" fill="#061510" stroke="#00d4aa" stroke-width="1"/>
+  <line x1="39" y1="86" x2="39" y2="104" stroke="#00d4aa" stroke-width="0.7" opacity="0.5"/>
+  <line x1="28" y1="95" x2="50" y2="95" stroke="#00d4aa" stroke-width="0.7" opacity="0.5"/>
+
+  <rect x="80" y="86" width="22" height="18" rx="3" fill="#061510" stroke="#00d4aa" stroke-width="1"/>
+  <line x1="91" y1="86" x2="91" y2="104" stroke="#00d4aa" stroke-width="0.7" opacity="0.5"/>
+  <line x1="80" y1="95" x2="102" y2="95" stroke="#00d4aa" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- Door -->
+  <rect x="53" y="90" width="24" height="20" rx="3" fill="#061510" stroke="#00d4aa" stroke-width="1"/>
+  <circle cx="63" cy="101" r="1.5" fill="#00d4aa"/>
+  <circle cx="68" cy="101" r="1.5" fill="#00d4aa"/>
+
+  <!-- Awning stripe -->
+  <rect x="26" y="82" width="78" height="6" rx="0" fill="url(#dg)"/>
+
+  <!-- Ground -->
+  <rect x="22" y="108" width="86" height="5" rx="2" fill="#0c1e14"/>
+
+  <!-- Lamp left -->
+  <rect x="23" y="75" width="2" height="35" rx="1" fill="#1a3a2a"/>
+  <circle cx="28" cy="75" r="4" fill="#00ffcc" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Lamp right -->
+  <rect x="105" y="75" width="2" height="35" rx="1" fill="#1a3a2a"/>
+  <circle cx="103" cy="75" r="4" fill="#00ffcc" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- OPEN sign -->
+  <rect x="70" y="93" width="22" height="8" rx="2" fill="#00a870"/>
+  <text x="81" y="100" font-family="Arial Black" font-size="5" font-weight="900"
+        text-anchor="middle" fill="#fff">OPEN</text>
+
+  <!-- === TEXT SECTION === -->
+  <!-- MiniBazar -->
+  <text x="142" y="60" font-family="Arial Black, Arial, sans-serif"
+        font-size="42" font-weight="900"
+        fill="url(#green)" filter="url(#glow)" letter-spacing="0.5">
+    MiniBazar
+  </text>
+
+  <!-- ERP -->
+  <text x="144" y="86" font-family="Arial, sans-serif"
+        font-size="18" font-weight="700"
+        fill="#4a7a6a" letter-spacing="10">
+    ERP
+  </text>
+
+  <!-- Tagline -->
+  <text x="144" y="104" font-family="Arial, sans-serif"
+        font-size="11" fill="#2a5040" letter-spacing="0.5">
+    মিষ্টান্ন ইনভেন্টরি ম্যানেজমেন্ট সিস্টেম
+  </text>
+
+  <!-- Developer + copyright -->
+  <text x="144" y="118" font-family="Arial, sans-serif"
+        font-size="9.5" fill="#1a3028">
+    Developed by Wahidsadik Aditto  ·  © 2026  ·  All Rights Reserved
+  </text>
+
+  <!-- Right accent lines -->
+  <line x1="590" y1="20" x2="590" y2="110" stroke="rgba(0,212,170,0.1)" stroke-width="1"/>
+  <circle cx="598" cy="40" r="3" fill="#00d4aa" opacity="0.15"/>
+  <circle cx="598" cy="65" r="2" fill="#00d4aa" opacity="0.1"/>
+  <circle cx="598" cy="90" r="3" fill="#00d4aa" opacity="0.15"/>
+</svg>

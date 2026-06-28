@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════
+   THEME COLOR VARIABLES — Dark (default) & Light
+   Format: R G B  (space separated, for rgb(var() / alpha))
+   ═══════════════════════════════════════════════════════════ */
+:root, .dark {
+  --c-primary:           16 185 129;
+  --c-primary-dim:       78 222 163;
+  --c-primary-container: 6 95 70;
+  --c-on-primary:        255 255 255;
+  --c-background:        11 18 30;
+  --c-surface:           17 24 39;
+  --c-surface-low:       11 18 30;
+  --c-surface-high:      31 41 55;
+  --c-surface-highest:   55 65 81;
+  --c-on-surface:        248 249 255;
+  --c-on-surface-var:    156 163 175;
+  --c-outline:           75 85 99;
+  --c-outline-var:       55 65 81;
+  --c-error:             239 68 68;
+  --c-warning:           245 158 11;
+  --c-success:           16 185 129;
+}
+
+.light {
+  --c-primary:           5 150 105;
+  --c-primary-dim:       16 185 129;
+  --c-primary-container: 209 250 229;
+  --c-on-primary:        255 255 255;
+  --c-background:        247 249 251;
+  --c-surface:           255 255 255;
+  --c-surface-low:       241 245 249;
+  --c-surface-high:      241 245 249;
+  --c-surface-highest:   226 232 240;
+  --c-on-surface:        15 23 42;
+  --c-on-surface-var:    100 116 139;
+  --c-outline:           203 213 225;
+  --c-outline-var:       226 232 240;
+  --c-error:             220 38 38;
+  --c-warning:           217 119 6;
+  --c-success:           5 150 105;
+}
+
+
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* Sidebar active state */
+.nav-active {
+  @apply bg-primary-container text-primary font-semibold;
+}
+.nav-item {
+  @apply flex items-center gap-stack-md px-stack-md py-stack-sm rounded-xl
+         text-on-surface-var text-body-md
+         hover:bg-surface-high hover:text-primary
+         transition-all duration-200 ease-in-out;
+}
+
+/* Table styles */
+.data-table th {
+  @apply text-label-md tracking-widest uppercase text-on-surface-var
+         px-stack-md py-stack-sm bg-surface-low border-b border-outline-var;
+}
+.data-table td {
+  @apply text-body-md text-on-surface px-stack-md py-stack-sm
+         border-b border-outline-var transition-colors;
+}
+.data-table tr:hover td {
+  @apply bg-primary/5;
+}
+
+/* Status chips */
+.chip {
+  @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold;
+}
+.chip-success  { @apply bg-success/15 text-success; }
+.chip-warning  { @apply bg-warning/15 text-warning; }
+.chip-error    { @apply bg-error/15 text-error; }
+.chip-secondary{ @apply bg-surface-highest text-on-surface-var; }
+
+/* Input field MD3 Filled style */
+.input-field {
+  @apply w-full bg-surface-high border-0 border-b-2 border-outline
+         rounded-t-lg px-stack-md pt-5 pb-2 text-body-md text-on-surface
+         placeholder-transparent
+         focus:outline-none focus:border-primary focus:ring-0
+         transition-colors duration-200;
+}
+
+/* Chart gradient */
+.chart-gradient {
+  background: linear-gradient(180deg, rgba(16,185,129,0.12) 0%, rgba(16,185,129,0) 100%);
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+/* Metric card hover */
+.metric-card {
+  @apply bg-surface border border-outline-var rounded-xl p-stack-md
+         transition-all duration-200 cursor-default
+         hover:border-primary/30 hover:shadow-primary-glow;
+}
+
+/* ── Mobile / Capacitor overrides ─────────────────────────────────────── */
+/* Safe area for notch and home-indicator on modern phones */
+:root {
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+}
+
+/* Prevent rubber-band scroll on iOS/Android WebView */
+html { overscroll-behavior: none; height: 100%; }
+body { overscroll-behavior: none; height: 100%; touch-action: pan-y; }
+#root { height: 100%; }
+
+/* Improve touch targets — all buttons at least 44px tall */
+button, a, [role="button"] { min-height: 36px; }
+
+/* Prevent callout on long-press */
+* { -webkit-touch-callout: none; }
+
+/* Smooth scrolling inside scrollable areas */
+.overflow-y-auto { -webkit-overflow-scrolling: touch; }
+
+/* Pull down to reveal address bar fix */
+body { min-height: 100vh; min-height: -webkit-fill-available; }

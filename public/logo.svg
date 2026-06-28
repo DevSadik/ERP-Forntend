@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#0d1f35"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#00c896"/>
+    </linearGradient>
+    <linearGradient id="darkGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a2a"/>
+      <stop offset="100%" stop-color="#0f2218"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e6b0"/>
+      <stop offset="100%" stop-color="#009970"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d2137"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bigGlow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="72" fill="url(#bg)"/>
+
+  <!-- Stars in sky -->
+  <circle cx="60" cy="50" r="1.5" fill="#00ffcc" opacity="0.4"/>
+  <circle cx="120" cy="35" r="1" fill="#ffffff" opacity="0.3"/>
+  <circle cx="280" cy="45" r="1.5" fill="#00ffcc" opacity="0.35"/>
+  <circle cx="340" cy="60" r="1" fill="#ffffff" opacity="0.25"/>
+  <circle cx="90" cy="75" r="1" fill="#ffffff" opacity="0.2"/>
+  <circle cx="320" cy="80" r="1.2" fill="#00ffcc" opacity="0.3"/>
+
+  <!-- Ground / road -->
+  <ellipse cx="200" cy="295" rx="160" ry="12" fill="rgba(0,212,170,0.06)"/>
+  <rect x="60" y="284" width="280" height="14" rx="7" fill="#0f2218"/>
+  <!-- Road markings -->
+  <rect x="140" y="289" width="30" height="4" rx="2" fill="rgba(0,255,204,0.2)"/>
+  <rect x="190" y="289" width="20" height="4" rx="2" fill="rgba(0,255,204,0.2)"/>
+  <rect x="230" y="289" width="30" height="4" rx="2" fill="rgba(0,255,204,0.2)"/>
+
+  <!-- Building shadow -->
+  <ellipse cx="200" cy="288" rx="120" ry="8" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- === MAIN SHOP BUILDING === -->
+
+  <!-- Building back wall (depth effect) -->
+  <rect x="88" y="130" width="226" height="158" rx="4" fill="#0a1e14"/>
+
+  <!-- Main front wall -->
+  <rect x="82" y="125" width="236" height="162" rx="6" fill="url(#wall)" filter="url(#shadow)"/>
+
+  <!-- Wall tiles / texture -->
+  <rect x="82" y="125" width="236" height="8" rx="3" fill="rgba(0,255,204,0.08)"/>
+  <line x1="82" y1="165" x2="318" y2="165" stroke="rgba(0,255,204,0.05)" stroke-width="1"/>
+  <line x1="82" y1="205" x2="318" y2="205" stroke="rgba(0,255,204,0.05)" stroke-width="1"/>
+  <line x1="82" y1="245" x2="318" y2="245" stroke="rgba(0,255,204,0.05)" stroke-width="1"/>
+
+  <!-- === ROOF / CANOPY === -->
+  <!-- Main roof triangle -->
+  <polygon points="65,128 200,72 335,128" fill="url(#roof)" filter="url(#bigGlow)"/>
+  <!-- Roof border -->
+  <polygon points="65,128 200,72 335,128" fill="none" stroke="#00ffcc" stroke-width="2" opacity="0.6"/>
+  <!-- Roof shine -->
+  <line x1="200" y1="72" x2="155" y2="128" stroke="rgba(255,255,255,0.15)" stroke-width="3"/>
+
+  <!-- Flat roof edge -->
+  <rect x="62" y="124" width="276" height="14" rx="4" fill="url(#darkGreen)" filter="url(#glow)"/>
+  <!-- Roof edge highlight -->
+  <rect x="62" y="124" width="276" height="4" rx="2" fill="rgba(0,255,204,0.4)"/>
+
+  <!-- Chimney / Flagpole -->
+  <rect x="195" y="58" width="10" height="70" rx="3" fill="#1a3a2a"/>
+  <!-- Flag -->
+  <path d="M205 62 L240 75 L205 88 Z" fill="url(#green)" filter="url(#glow)"/>
+  <text x="214" y="80" font-family="Arial" font-size="8" font-weight="900" fill="#0a1628">MB</text>
+
+  <!-- === SHOP SIGN BOARD === -->
+  <rect x="100" y="132" width="200" height="36" rx="6" fill="#0a2218" stroke="#00d4aa" stroke-width="1.5"/>
+  <!-- Sign glow -->
+  <rect x="100" y="132" width="200" height="36" rx="6" fill="none" stroke="#00ffcc" stroke-width="0.5" opacity="0.4"/>
+  <!-- Sign lights dots -->
+  <circle cx="110" cy="150" r="2.5" fill="#00ffcc" filter="url(#glow)"/>
+  <circle cx="290" cy="150" r="2.5" fill="#00ffcc" filter="url(#glow)"/>
+  <!-- Sign text -->
+  <text x="200" y="157" font-family="Arial Black, Arial" font-size="17" font-weight="900"
+        text-anchor="middle" fill="#00ffcc" filter="url(#glow)" letter-spacing="1">
+    MiniBazar
+  </text>
+
+  <!-- === LEFT WINDOW === -->
+  <rect x="92" y="178" width="70" height="56" rx="5" fill="#061510" stroke="#00d4aa" stroke-width="1.5"/>
+  <!-- Window glow -->
+  <rect x="92" y="178" width="70" height="56" rx="5" fill="rgba(0,212,170,0.08)"/>
+  <!-- Window frame cross -->
+  <line x1="127" y1="178" x2="127" y2="234" stroke="#00d4aa" stroke-width="1" opacity="0.5"/>
+  <line x1="92" y1="206" x2="162" y2="206" stroke="#00d4aa" stroke-width="1" opacity="0.5"/>
+  <!-- Window display items (shelves) -->
+  <rect x="97" y="193" width="26" height="2" rx="1" fill="rgba(0,255,204,0.3)"/>
+  <rect x="132" y="193" width="26" height="2" rx="1" fill="rgba(0,255,204,0.3)"/>
+  <rect x="97" y="215" width="26" height="2" rx="1" fill="rgba(0,255,204,0.2)"/>
+  <rect x="132" y="215" width="26" height="2" rx="1" fill="rgba(0,255,204,0.2)"/>
+  <!-- Items on shelf -->
+  <rect x="100" y="188" width="8" height="5" rx="1" fill="#00c896" opacity="0.6"/>
+  <rect x="112" y="186" width="8" height="7" rx="1" fill="#00e6b0" opacity="0.5"/>
+  <rect x="136" y="188" width="8" height="5" rx="1" fill="#00c896" opacity="0.6"/>
+  <rect x="148" y="186" width="8" height="7" rx="1" fill="#00e6b0" opacity="0.5"/>
+
+  <!-- === RIGHT WINDOW === -->
+  <rect x="238" y="178" width="70" height="56" rx="5" fill="#061510" stroke="#00d4aa" stroke-width="1.5"/>
+  <rect x="238" y="178" width="70" height="56" rx="5" fill="rgba(0,212,170,0.08)"/>
+  <line x1="273" y1="178" x2="273" y2="234" stroke="#00d4aa" stroke-width="1" opacity="0.5"/>
+  <line x1="238" y1="206" x2="308" y2="206" stroke="#00d4aa" stroke-width="1" opacity="0.5"/>
+  <rect x="243" y="193" width="26" height="2" rx="1" fill="rgba(0,255,204,0.3)"/>
+  <rect x="278" y="193" width="26" height="2" rx="1" fill="rgba(0,255,204,0.3)"/>
+  <rect x="243" y="215" width="26" height="2" rx="1" fill="rgba(0,255,204,0.2)"/>
+  <rect x="278" y="215" width="26" height="2" rx="1" fill="rgba(0,255,204,0.2)"/>
+  <rect x="246" y="188" width="8" height="5" rx="1" fill="#00c896" opacity="0.6"/>
+  <rect x="258" y="186" width="8" height="7" rx="1" fill="#00e6b0" opacity="0.5"/>
+  <rect x="282" y="188" width="8" height="5" rx="1" fill="#00c896" opacity="0.6"/>
+  <rect x="294" y="186" width="8" height="7" rx="1" fill="#00e6b0" opacity="0.5"/>
+
+  <!-- === MAIN DOOR === -->
+  <rect x="166" y="210" width="68" height="77" rx="5" fill="#061510" stroke="#00d4aa" stroke-width="1.5"/>
+  <!-- Door arch top -->
+  <path d="M166 215 Q200 200 234 215" fill="#061510" stroke="#00d4aa" stroke-width="1.5"/>
+  <!-- Door panels -->
+  <rect x="170" y="218" width="28" height="35" rx="3" fill="rgba(0,212,170,0.06)" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+  <rect x="202" y="218" width="28" height="35" rx="3" fill="rgba(0,212,170,0.06)" stroke="rgba(0,212,170,0.2)" stroke-width="1"/>
+  <!-- Door handles -->
+  <circle cx="196" cy="248" r="4" fill="#00d4aa" opacity="0.8"/>
+  <circle cx="204" cy="248" r="4" fill="#00d4aa" opacity="0.8"/>
+  <!-- Door step -->
+  <rect x="158" y="284" width="84" height="8" rx="3" fill="#0f2a1a"/>
+  <rect x="162" y="284" width="76" height="3" rx="1.5" fill="rgba(0,255,204,0.2)"/>
+
+  <!-- === AWNING / STRIPE === -->
+  <rect x="82" y="168" width="236" height="14" rx="0" fill="url(#darkGreen)"/>
+  <!-- Awning stripes -->
+  <rect x="82" y="168" width="24" height="14" fill="rgba(0,255,204,0.15)"/>
+  <rect x="130" y="168" width="24" height="14" fill="rgba(0,255,204,0.15)"/>
+  <rect x="178" y="168" width="24" height="14" fill="rgba(0,255,204,0.15)"/>
+  <rect x="226" y="168" width="24" height="14" fill="rgba(0,255,204,0.15)"/>
+  <rect x="274" y="168" width="24" height="14" fill="rgba(0,255,204,0.15)"/>
+
+  <!-- Awning bottom fringe -->
+  <path d="M82 182 Q94 190 106 182 Q118 190 130 182 Q142 190 154 182 Q166 190 178 182 Q190 190 202 182 Q214 190 226 182 Q238 190 250 182 Q262 190 274 182 Q286 190 298 182 Q310 190 318 182"
+        fill="none" stroke="#00d4aa" stroke-width="2" opacity="0.7"/>
+
+  <!-- === SIDEWALK === -->
+  <rect x="62" y="286" width="276" height="12" rx="4" fill="#0c1e14"/>
+  <!-- Sidewalk tiles -->
+  <line x1="112" y1="286" x2="112" y2="298" stroke="rgba(0,255,204,0.1)" stroke-width="1"/>
+  <line x1="162" y1="286" x2="162" y2="298" stroke="rgba(0,255,204,0.1)" stroke-width="1"/>
+  <line x1="212" y1="286" x2="212" y2="298" stroke="rgba(0,255,204,0.1)" stroke-width="1"/>
+  <line x1="262" y1="286" x2="262" y2="298" stroke="rgba(0,255,204,0.1)" stroke-width="1"/>
+
+  <!-- === LAMP POSTS === -->
+  <!-- Left lamp -->
+  <rect x="75" y="200" width="5" height="86" rx="2" fill="#1a3a2a"/>
+  <path d="M80 200 Q95 195 95 208" fill="none" stroke="#1a3a2a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="95" cy="208" r="7" fill="#00ffcc" opacity="0.9" filter="url(#bigGlow)"/>
+  <circle cx="95" cy="208" r="4" fill="#ffffff" opacity="0.8"/>
+  <!-- Lamp glow on ground -->
+  <ellipse cx="90" cy="286" rx="20" ry="4" fill="rgba(0,255,204,0.08)"/>
+
+  <!-- Right lamp -->
+  <rect x="320" y="200" width="5" height="86" rx="2" fill="#1a3a2a"/>
+  <path d="M320 200 Q305 195 305 208" fill="none" stroke="#1a3a2a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="305" cy="208" r="7" fill="#00ffcc" opacity="0.9" filter="url(#bigGlow)"/>
+  <circle cx="305" cy="208" r="4" fill="#ffffff" opacity="0.8"/>
+  <ellipse cx="310" cy="286" rx="20" ry="4" fill="rgba(0,255,204,0.08)"/>
+
+  <!-- === OPEN sign === -->
+  <rect x="240" y="250" width="50" height="20" rx="4" fill="#00a870" filter="url(#glow)"/>
+  <text x="265" y="264" font-family="Arial Black" font-size="10" font-weight="900"
+        text-anchor="middle" fill="#ffffff" letter-spacing="1">OPEN</text>
+
+  <!-- === TEXT BELOW === -->
+  <!-- MiniBazar text -->
+  <text x="200" y="325" font-family="Arial Black, Arial, sans-serif"
+        font-size="30" font-weight="900" text-anchor="middle"
+        fill="url(#green)" filter="url(#bigGlow)" letter-spacing="1">
+    MiniBazar
+  </text>
+
+  <!-- ERP -->
+  <text x="200" y="350" font-family="Arial, sans-serif"
+        font-size="14" font-weight="700" text-anchor="middle"
+        fill="#5a7a6a" letter-spacing="8">
+    ERP
+  </text>
+
+  <!-- Developer -->
+  <text x="200" y="372" font-family="Arial, sans-serif"
+        font-size="9.5" text-anchor="middle"
+        fill="#2a4a3a" letter-spacing="0.5">
+    by Wahidsadik Aditto  ©2026
+  </text>
+
+  <!-- Corner decorations -->
+  <circle cx="38" cy="38" r="5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.25"/>
+  <circle cx="362" cy="38" r="5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.25"/>
+  <circle cx="38" cy="362" r="5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.25"/>
+  <circle cx="362" cy="362" r="5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.25"/>
+</svg>
