@@ -10,8 +10,7 @@ import { format } from 'date-fns';
 const API_BASE = process.env.REACT_APP_API_URL?.replace('/api/v1', '') || 'http://localhost:5000';
 
 const BUSINESS_TYPES = [
-  'মিষ্টান্ন', 'বিস্কুট ও কেক', 'চকোলেট', 'চিপস ও স্ন্যাকস',
-  'মুদি দোকান', 'মিষ্টির দোকান', 'পাইকারি', 'অন্যান্য',
+  'Wholesale Shop', 'Super Shop', 'Confectionery Shop', 'Genarel Shop', 'Departmental Store', 'Others'
 ];
 
 export default function ShopProfile() {
