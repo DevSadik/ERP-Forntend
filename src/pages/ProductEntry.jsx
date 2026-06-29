@@ -94,7 +94,7 @@ function BarcodeCamera({ onDetected, onClose }) {
                 ))}
                 <motion.div
                   className="absolute left-1 right-1 h-[2px] bg-emerald-400"
-                  style={{ boxShadow: '0 0 10px #34d399' }}
+                  style={{ boxShadow: '0 0 10px #69b945' }}
                   animate={{ top: ['8%','92%','8%'] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                 />

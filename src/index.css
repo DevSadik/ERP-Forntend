@@ -10,9 +10,9 @@
    Format: R G B  (space separated, for rgb(var() / alpha))
    ═══════════════════════════════════════════════════════════ */
 :root, .dark {
-  --c-primary:           16 185 129;
-  --c-primary-dim:       78 222 163;
-  --c-primary-container: 6 95 70;
+  --c-primary:           69 166 52;
+  --c-primary-dim:       120 200 95;
+  --c-primary-container: 30 75 22;
   --c-on-primary:        255 255 255;
   --c-background:        11 18 30;
   --c-surface:           17 24 39;
@@ -25,13 +25,13 @@
   --c-outline-var:       55 65 81;
   --c-error:             239 68 68;
   --c-warning:           245 158 11;
-  --c-success:           16 185 129;
+  --c-success:           69 166 52;
 }
 
 .light {
-  --c-primary:           5 150 105;
-  --c-primary-dim:       16 185 129;
-  --c-primary-container: 209 250 229;
+  --c-primary:           60 145 45;
+  --c-primary-dim:       69 166 52;
+  --c-primary-container: 220 245 210;
   --c-on-primary:        255 255 255;
   --c-background:        247 249 251;
   --c-surface:           255 255 255;
@@ -44,7 +44,7 @@
   --c-outline-var:       226 232 240;
   --c-error:             220 38 38;
   --c-warning:           217 119 6;
-  --c-success:           5 150 105;
+  --c-success:           60 145 45;
 }
 
 

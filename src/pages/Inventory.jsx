@@ -105,7 +105,7 @@ export default function Inventory() {
                 <YAxis tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} />
                 <Tooltip contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8, color: '#f8f9ff', fontSize: 12 }} />
                 <Bar dataKey="stock" name="Current Stock" radius={[3,3,0,0]}>
-                  {chartData.map((d, i) => <Cell key={i} fill={d.stock < d.reorder ? '#f59e0b' : '#10b981'} />)}
+                  {chartData.map((d, i) => <Cell key={i} fill={d.stock < d.reorder ? '#f59e0b' : '#45a634'} />)}
                 </Bar>
                 <Bar dataKey="reorder" name="Reorder Point" fill="#374151" radius={[3,3,0,0]} />
               </BarChart>

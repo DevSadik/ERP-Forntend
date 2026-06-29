@@ -5,6 +5,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Logo-green palette — override Tailwind's emerald so all emerald-*
+        // classes across the app match the Mini Manager logo green.
+        emerald: {
+          50:  "#eef8ea",
+          100: "#d6efcc",
+          200: "#b3e09f",
+          300: "#8ccf6f",
+          400: "#69b945",
+          500: "#45a634",
+          600: "#3a8c2c",
+          700: "#2f7124",
+          800: "#27571f",
+          900: "#1e441a",
+        },
         // CSS-variable driven — switches with light/dark
         primary:              "rgb(var(--c-primary) / <alpha-value>)",
         "primary-dim":        "rgb(var(--c-primary-dim) / <alpha-value>)",

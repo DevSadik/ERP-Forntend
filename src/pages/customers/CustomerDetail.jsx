@@ -56,7 +56,7 @@ function CameraScanner({ onDetected, onClose }) {
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="relative w-48 h-24">
               {[['top-0 left-0','border-t-[3px] border-l-[3px] rounded-tl-lg'],['top-0 right-0','border-t-[3px] border-r-[3px] rounded-tr-lg'],['bottom-0 left-0','border-b-[3px] border-l-[3px] rounded-bl-lg'],['bottom-0 right-0','border-b-[3px] border-r-[3px] rounded-br-lg']].map(([pos,cls],i) => <div key={i} className={`absolute w-6 h-6 border-primary ${cls} ${pos}`} />)}
-              <motion.div className="absolute left-1 right-1 h-[2px] bg-primary" style={{ boxShadow:'0 0 8px #10b981' }} animate={{ top:['8%','92%','8%'] }} transition={{ duration:2, repeat:Infinity, ease:'linear' }} />
+              <motion.div className="absolute left-1 right-1 h-[2px] bg-primary" style={{ boxShadow:'0 0 8px #45a634' }} animate={{ top:['8%','92%','8%'] }} transition={{ duration:2, repeat:Infinity, ease:'linear' }} />
             </div>
           </div>
         )}

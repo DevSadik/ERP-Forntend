@@ -88,7 +88,7 @@ function CameraScanner({ onDetected, onClose }) {
                 ))}
                 <motion.div
                   className="absolute left-1 right-1 h-[2px] bg-primary"
-                  style={{ boxShadow: '0 0 12px #10b981, 0 0 4px #10b981' }}
+                  style={{ boxShadow: '0 0 12px #45a634, 0 0 4px #45a634' }}
                   animate={{ top: ['8%', '92%', '8%'] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                 />

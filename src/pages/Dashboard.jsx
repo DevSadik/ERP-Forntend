@@ -67,15 +67,15 @@ export default function Dashboard() {
                 <AreaChart data={chartData} margin={{ top: 4, right: 4, left: -8, bottom: 0 }}>
                   <defs>
                     <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%"  stopColor="#10b981" stopOpacity={0.2} />
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}   />
+                      <stop offset="5%"  stopColor="#45a634" stopOpacity={0.2} />
+                      <stop offset="95%" stopColor="#45a634" stopOpacity={0}   />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
                   <XAxis dataKey="time" tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fill: '#9ca3af', fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `৳${(v/1000).toFixed(0)}K`} />
                   <Tooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="sales" stroke="#10b981" strokeWidth={2} fill="url(#areaGrad)" />
+                  <Area type="monotone" dataKey="sales" stroke="#45a634" strokeWidth={2} fill="url(#areaGrad)" />
                 </AreaChart>
               </ResponsiveContainer>
             )}

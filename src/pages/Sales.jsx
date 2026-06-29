@@ -82,7 +82,7 @@ function CameraScanner({ onDetected, onClose }) {
                 {[['top-0 left-0','border-t-4 border-l-4 rounded-tl-lg'],['top-0 right-0','border-t-4 border-r-4 rounded-tr-lg'],['bottom-0 left-0','border-b-4 border-l-4 rounded-bl-lg'],['bottom-0 right-0','border-b-4 border-r-4 rounded-br-lg']].map(([pos,cls],i) => (
                   <div key={i} className={`absolute w-8 h-8 border-primary ${cls} ${pos}`} />
                 ))}
-                <motion.div className="absolute left-2 right-2 h-0.5 bg-primary shadow-[0_0_10px_#10b981]"
+                <motion.div className="absolute left-2 right-2 h-0.5 bg-primary shadow-[0_0_10px_#45a634]"
                   animate={{ top:['8%','92%','8%'] }} transition={{ duration:2, repeat:Infinity, ease:'linear' }} />
               </div>
             </div>

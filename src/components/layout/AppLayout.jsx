@@ -96,7 +96,7 @@ export default function AppLayout() {
           {!collapsed && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1 className="text-headline-sm font-black text-primary leading-none tracking-tight">Mini Manager ERP</h1>
-              <p className="text-label-sm text-on-surface-var">মিষ্টান্ন ম্যানেজমেন্ট</p>
+              <p className="text-label-sm text-on-surface-var">Stock Management</p>
             </motion.div>
           )}
           <button onClick={() => setCollapsed(c => !c)}

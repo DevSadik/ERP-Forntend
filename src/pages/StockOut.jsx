@@ -87,7 +87,7 @@ function CameraScanner({ onDetected, onClose }) {
                 <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary rounded-tr-lg" />
                 <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary rounded-bl-lg" />
                 <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary rounded-br-lg" />
-                <motion.div className="absolute left-2 right-2 h-0.5 bg-primary shadow-[0_0_8px_#10b981]"
+                <motion.div className="absolute left-2 right-2 h-0.5 bg-primary shadow-[0_0_8px_#45a634]"
                   animate={{ top: ['10%', '90%', '10%'] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} />
               </div>
             </div>

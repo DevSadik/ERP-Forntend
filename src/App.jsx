@@ -92,7 +92,7 @@ export default function App() {
                 <BrowserRouter>
                   <Toaster position="top-center" toastOptions={{
                     style: { background:'rgb(var(--c-surface-high))', color:'rgb(var(--c-on-surface))', border:'1px solid rgb(var(--c-outline-var))', fontSize:'14px' },
-                    success: { iconTheme: { primary:'#10b981', secondary:'#fff' } },
+                    success: { iconTheme: { primary:'#45a634', secondary:'#fff' } },
                     error:   { iconTheme: { primary:'#ef4444', secondary:'#fff' } },
                     duration: 3500,
                   }} />
