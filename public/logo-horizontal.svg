@@ -38,7 +38,7 @@
   <!-- Sign board -->
   <rect x="28" y="66" width="74" height="16" rx="3" fill="#061510" stroke="#00d4aa" stroke-width="1"/>
   <text x="65" y="78" font-family="Arial Black" font-size="8" font-weight="900"
-        text-anchor="middle" fill="#00ffcc" filter="url(#glow)">MiniBazar</text>
+        text-anchor="middle" fill="#00ffcc" filter="url(#glow)">Mini Manager</text>
 
   <!-- Windows -->
   <rect x="28" y="86" width="22" height="18" rx="3" fill="#061510" stroke="#00d4aa" stroke-width="1"/>
@@ -74,11 +74,11 @@
         text-anchor="middle" fill="#fff">OPEN</text>
 
   <!-- === TEXT SECTION === -->
-  <!-- MiniBazar -->
+  <!-- Mini Manager -->
   <text x="142" y="60" font-family="Arial Black, Arial, sans-serif"
         font-size="42" font-weight="900"
         fill="url(#green)" filter="url(#glow)" letter-spacing="0.5">
-    MiniBazar
+    Mini Manager
   </text>
 
   <!-- ERP -->

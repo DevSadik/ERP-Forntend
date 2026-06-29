@@ -17,8 +17,8 @@ export default function Settings() {
   const [tab, setTab] = useState('সাধারণ');
 
   const [company, setCompany] = useState({
-    name: 'SugarStock BD Ltd.',
-    email: 'admin@sugarstock.com',
+    name: 'Mini Manager BD Ltd.',
+    email: 'admin@minimanager.com',
     phone: '+880-1700-000000',
     currency: 'BDT',
   });

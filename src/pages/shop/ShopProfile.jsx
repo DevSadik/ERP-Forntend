@@ -157,7 +157,11 @@ export default function ShopProfile() {
           <span className="material-symbols-outlined text-error !text-[24px]">warning</span>
           <div className="flex-1">
             <p className="text-body-md font-bold text-error">ট্রায়াল মেয়াদ শেষ হয়েছে</p>
-            <p className="text-label-sm text-on-surface-var">সাবস্ক্রিপশন কিনতে admin-এর সাথে যোগাযোগ করুন।</p>
+            <p className="text-label-sm text-on-surface-var">সাবস্ক্রিপশন কিনতে যোগাযোগ করুন:</p>
+            <a href="tel:01844815121" className="text-label-sm font-bold text-error hover:underline inline-flex items-center gap-1 mt-0.5">
+              <span className="material-symbols-outlined !text-[14px]">call</span>
+              01844815121
+            </a>
           </div>
         </div>
       )}

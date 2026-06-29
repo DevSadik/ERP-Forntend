@@ -67,7 +67,7 @@ export default function SupplierRegister() {
             <span className="material-symbols-outlined text-white !text-[22px]">storefront</span>
           </div>
           <div>
-            <h1 className="text-headline-sm font-bold text-primary leading-none">MiniBazar ERP</h1>
+            <h1 className="text-headline-sm font-bold text-primary leading-none">Mini Manager ERP</h1>
             <p className="text-label-sm text-on-surface-var">Supplier Portal</p>
           </div>
         </div>

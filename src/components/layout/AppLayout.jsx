@@ -89,13 +89,13 @@ export default function AppLayout() {
         {/* Logo */}
         <div className="flex items-center gap-stack-md px-stack-md py-stack-lg border-b border-outline-var min-h-[64px]">
           <div className="flex-shrink-0">
-            <img src="/logo.svg" alt="MiniBazar ERP"
+            <img src="/logo.png" alt="Mini Manager ERP"
               className={`transition-all duration-300 ${collapsed ? 'w-9 h-9' : 'w-11 h-11'}`}
               style={{ filter: 'drop-shadow(0 0 8px rgba(16,185,129,0.35))' }} />
           </div>
           {!collapsed && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <h1 className="text-headline-sm font-black text-primary leading-none tracking-tight">MiniBazar ERP</h1>
+              <h1 className="text-headline-sm font-black text-primary leading-none tracking-tight">Mini Manager ERP</h1>
               <p className="text-label-sm text-on-surface-var">মিষ্টান্ন ম্যানেজমেন্ট</p>
             </motion.div>
           )}
@@ -168,10 +168,14 @@ export default function AppLayout() {
           {!collapsed && (
             <div className="pt-stack-sm border-t border-outline-var mt-2">
               <p className="text-[10px] text-on-surface-var text-center leading-relaxed">
-                © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span><br/>
+                © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span><br/>
                 Developed by <span className="font-semibold">Wahidsadik Aditto</span><br/>
                 All rights reserved.
               </p>
+              <a href="tel:01844815121" className="text-[10px] text-primary font-bold text-center w-full mt-1 inline-flex items-center justify-center gap-1 hover:underline">
+                <span className="material-symbols-outlined !text-[12px]">call</span>
+                01844815121
+              </a>
             </div>
           )}
         </div>
@@ -192,7 +196,7 @@ export default function AppLayout() {
         {/* Copyright footer — desktop */}
         <div className="hidden lg:block border-t border-outline-var bg-surface px-6 py-2">
           <p className="text-[11px] text-on-surface-var text-center">
-            © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span> — Developed by <span className="font-semibold text-on-surface">Wahidsadik Aditto</span> — All rights reserved.
+            © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span> — Developed by <span className="font-semibold text-on-surface">Wahidsadik Aditto</span> — All rights reserved.
           </p>
         </div>
 
@@ -271,7 +275,7 @@ function MoreMenu({ logout, navigate, user, isShop, lang }) {
               {/* Copyright in mobile menu */}
               <div className="mt-4 pt-3 border-t border-outline-var text-center">
                 <p className="text-[10px] text-on-surface-var">
-                  © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span> by <span className="font-semibold">Wahidsadik Aditto</span>
+                  © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span> by <span className="font-semibold">Wahidsadik Aditto</span>
                 </p>
               </div>
             </motion.div>
@@ -303,6 +307,10 @@ function ExpiryBanner() {
               ? 'Please renew to Pro to continue using all features. Contact us to upgrade.'
               : 'সব সুবিধা চালু রাখতে Pro-তে renew করুন। আপগ্রেড করতে যোগাযোগ করুন।'}
           </p>
+          <a href="tel:01844815121" className="text-label-sm font-bold text-error hover:underline inline-flex items-center gap-1 mt-0.5">
+            <span className="material-symbols-outlined !text-[14px]">call</span>
+            01844815121
+          </a>
         </div>
         <button onClick={() => navigate('/profile')}
           className="bg-error text-white font-bold rounded-xl px-4 py-2 text-label-md hover:brightness-110 transition-all whitespace-nowrap">

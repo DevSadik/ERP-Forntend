@@ -41,7 +41,7 @@ export default function AdminDashboard() {
           Welcome, {user?.name} 👋
         </h1>
         <p className="text-body-md text-on-surface-var mt-1">
-          MiniBazar ERP Admin Panel — manage products, shops and users.
+          Mini Manager ERP Admin Panel — manage products, shops and users.
         </p>
       </div>
 

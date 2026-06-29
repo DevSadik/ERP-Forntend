@@ -65,9 +65,9 @@ export default function ShopRegister() {
 
           {/* Logo */}
           <div className="flex flex-col items-center mb-6">
-            <img src="/logo.svg" alt="MiniBazar" className="w-20 h-20 mb-3"
+            <img src="/logo.png" alt="Mini Manager" className="w-20 h-20 mb-3"
               style={{ filter:'drop-shadow(0 0 16px rgba(16,185,129,0.3))' }} />
-            <h1 className="text-headline-md font-black text-primary">MiniBazar ERP</h1>
+            <h1 className="text-headline-md font-black text-primary">Mini Manager ERP</h1>
           </div>
 
           <div className="bg-surface border border-outline-var rounded-2xl p-8 shadow-modal text-center">
@@ -95,7 +95,7 @@ export default function ShopRegister() {
               <div className="space-y-3 text-left mb-6">
                 {[
                   { icon:'inbox', text:'আপনার Gmail খুলুন' },
-                  { icon:'search', text:'"MiniBazar ERP" email খুঁজুন' },
+                  { icon:'search', text:'"Mini Manager ERP" email খুঁজুন' },
                   { icon:'open_in_new', text:'"ইমেইল যাচাই করুন" বাটনে ক্লিক করুন' },
                   { icon:'dashboard', text:'ড্যাশবোর্ডে চলে যাবেন!' },
                 ].map((s, i) => (
@@ -137,7 +137,7 @@ export default function ShopRegister() {
           </div>
 
           <p className="text-center text-[11px] text-on-surface-var mt-4">
-            © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span> by Wahidsadik Aditto
+            © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span> by Wahidsadik Aditto
           </p>
         </motion.div>
       </div>
@@ -153,9 +153,9 @@ export default function ShopRegister() {
 
         {/* Logo */}
         <div className="flex flex-col items-center mb-6">
-          <img src="/logo.svg" alt="MiniBazar" className="w-20 h-20 mb-3"
+          <img src="/logo.png" alt="Mini Manager" className="w-20 h-20 mb-3"
             style={{ filter:'drop-shadow(0 0 16px rgba(16,185,129,0.3))' }} />
-          <h1 className="text-headline-md font-black text-primary">MiniBazar ERP</h1>
+          <h1 className="text-headline-md font-black text-primary">Mini Manager ERP</h1>
           <p className="text-label-sm text-on-surface-var">নতুন দোকান রেজিস্ট্রেশন</p>
         </div>
 
@@ -271,7 +271,7 @@ export default function ShopRegister() {
         </div>
 
         <p className="text-center text-[11px] text-on-surface-var mt-4">
-          © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span> by Wahidsadik Aditto
+          © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span> by Wahidsadik Aditto
         </p>
       </motion.div>
     </div>

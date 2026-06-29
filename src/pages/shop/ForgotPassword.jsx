@@ -35,9 +35,9 @@ export default function ForgotPassword() {
         className="w-full max-w-sm relative z-10">
 
         <div className="flex flex-col items-center mb-8">
-          <img src="/logo.svg" alt="MiniBazar" className="w-20 h-20 mb-3"
+          <img src="/logo.png" alt="Mini Manager" className="w-20 h-20 mb-3"
             style={{ filter:'drop-shadow(0 0 16px rgba(16,185,129,0.3))' }} />
-          <h1 className="text-headline-md font-black text-primary">MiniBazar ERP</h1>
+          <h1 className="text-headline-md font-black text-primary">Mini Manager ERP</h1>
         </div>
 
         <div className="bg-surface border border-outline-var rounded-2xl p-8 shadow-modal">
@@ -75,7 +75,7 @@ export default function ForgotPassword() {
         </div>
 
         <p className="text-center text-[11px] text-on-surface-var mt-4">
-          © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span> by Wahidsadik Aditto
+          © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span> by Wahidsadik Aditto
         </p>
       </motion.div>
     </div>

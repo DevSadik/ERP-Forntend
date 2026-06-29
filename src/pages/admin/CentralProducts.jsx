@@ -153,6 +153,15 @@ export default function CentralProducts() {
 
   const items = data?.data || [];
   const meta  = data?.meta || {};
+
+  // Categories & companies from the database (for auto-suggest)
+  const { data: metaData } = useQuery({
+    queryKey: ['central-meta'],
+    queryFn: () => api.get('/admin/central-meta').then(r => r.data.data),
+  });
+  const dbCategories = metaData?.categories || [];
+  const dbCompanies  = metaData?.companies  || [];
+
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
   const validate = () => {
@@ -169,6 +178,7 @@ export default function CentralProducts() {
       : api.post('/admin/central', payload),
     onSuccess: () => {
       qc.invalidateQueries(['central-products']);
+      qc.invalidateQueries(['central-meta']);
       toast.success(editId ? 'আপডেট হয়েছে!' : 'কেন্দ্রীয় পণ্য যোগ হয়েছে!');
       closeModal();
     },
@@ -375,8 +385,11 @@ export default function CentralProducts() {
                 {/* Company */}
                 <div>
                   <label className="block text-label-sm text-on-surface-var mb-1.5 font-semibold uppercase tracking-wide">কোম্পানি</label>
-                  <input value={form.company} onChange={e => set('company', e.target.value)} placeholder="যেমন: প্রাণ আরএফএল"
+                  <input list="central-company-list" value={form.company} onChange={e => set('company', e.target.value)} placeholder="যেমন: প্রাণ আরএফএল"
                     className="w-full bg-surface-high border border-outline-var rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                  <datalist id="central-company-list">
+                    {dbCompanies.map(c => <option key={c} value={c} />)}
+                  </datalist>
                 </div>
 
                 {/* Category */}
@@ -386,7 +399,7 @@ export default function CentralProducts() {
                     placeholder="যেমন: টফি, গামি, চকোলেট"
                     className="w-full bg-surface-high border border-outline-var rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
                   <datalist id="central-category-list">
-                    {['টফি','ললিপপ','চকোলেট','গামি','মার্শমেলো','সাওয়ার ক্যান্ডি','হার্ড ক্যান্ডি','বিস্কুট','কেক','চিপস','পানীয়','অন্যান্য'].map(c => <option key={c} value={c} />)}
+                    {dbCategories.map(c => <option key={c} value={c} />)}
                   </datalist>
                 </div>
 

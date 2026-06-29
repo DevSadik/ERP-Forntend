@@ -18,6 +18,7 @@ import AdminDashboard    from './pages/admin/AdminDashboard';
 import AdminUsers        from './pages/admin/AdminUsers';
 import AdminShops        from './pages/admin/AdminShops';
 import CentralProducts   from './pages/admin/CentralProducts';
+import PendingProducts   from './pages/admin/PendingProducts';
 import ProductEntry      from './pages/ProductEntry';
 import Settings          from './pages/Settings';
 
@@ -106,6 +107,7 @@ export default function App() {
                     <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
                       <Route index                      element={<AdminDashboard />} />
                       <Route path="central-products"    element={<CentralProducts />} />
+                      <Route path="pending"             element={<PendingProducts />} />
                       <Route path="product-entry"       element={<ProductEntry />} />
                       <Route path="shops"               element={<AdminShops />} />
                       <Route path="users"               element={<AdminUsers />} />

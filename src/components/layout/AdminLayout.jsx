@@ -7,6 +7,7 @@ import { useTheme } from '../../context/ThemeContext';
 const NAV = [
   { to: '/admin',                  icon: 'dashboard',    label: 'Dashboard',        end: true },
   { to: '/admin/central-products', icon: 'inventory_2',  label: 'Central Products'  },
+  { to: '/admin/pending',          icon: 'pending_actions', label: 'Pending Review' },
   { to: '/admin/product-entry',    icon: 'edit_note',    label: 'Product Entry'     },
   { to: '/admin/shops',            icon: 'storefront',   label: 'All Shops'         },
   { to: '/admin/users',            icon: 'group',        label: 'Admin Users'       },
@@ -32,11 +33,11 @@ export default function AdminLayout() {
 
         {/* Logo */}
         <div className="flex items-center gap-3 px-4 py-5 border-b border-outline-var min-h-[64px]">
-          <img src="/logo.svg" alt="MiniBazar" className="w-9 h-9 flex-shrink-0"
+          <img src="/logo.png" alt="Mini Manager" className="w-9 h-9 flex-shrink-0"
             style={{ filter:'drop-shadow(0 0 6px rgba(16,185,129,0.3))' }} />
           {!collapsed && (
             <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }}>
-              <p className="text-body-md font-black text-primary leading-none">MiniBazar ERP</p>
+              <p className="text-body-md font-black text-primary leading-none">Mini Manager ERP</p>
               <p className="text-label-sm text-on-surface-var">Admin Panel</p>
             </motion.div>
           )}
@@ -119,7 +120,7 @@ export default function AdminLayout() {
 
           {!collapsed && (
             <p className="text-[10px] text-on-surface-var/50 text-center px-3 pt-1">
-              © 2026 MiniBazar ERP by Wahidsadik Aditto
+              © 2026 Mini Manager ERP by Wahidsadik Aditto
             </p>
           )}
         </div>
@@ -161,7 +162,7 @@ export default function AdminLayout() {
         {/* Footer */}
         <div className="border-t border-outline-var bg-surface px-6 py-2">
           <p className="text-[11px] text-on-surface-var text-center">
-            © 2026 <span className="text-primary font-semibold">MiniBazar ERP</span> — Admin Panel — by Wahidsadik Aditto
+            © 2026 <span className="text-primary font-semibold">Mini Manager ERP</span> — Admin Panel — by Wahidsadik Aditto
           </p>
         </div>
       </div>

@@ -50,7 +50,7 @@ export default function PublicLedger() {
       <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 px-4 py-5">
         <div className="max-w-md mx-auto flex items-center justify-between">
           <div>
-            <p className="text-sm text-emerald-200">MiniBazar ERP</p>
+            <p className="text-sm text-emerald-200">Mini Manager ERP</p>
             <h1 className="text-xl font-black mt-0.5">{customer.name}</h1>
             {customer.phone && <p className="text-sm text-emerald-200 mt-0.5">{customer.phone}</p>}
           </div>
@@ -104,7 +104,7 @@ export default function PublicLedger() {
 
         {/* Footer */}
         <p className="text-center text-xs text-gray-600 py-4">
-          © 2026 MiniBazar ERP by Wahidsadik Aditto
+          © 2026 Mini Manager ERP by Wahidsadik Aditto
         </p>
       </div>
     </div>

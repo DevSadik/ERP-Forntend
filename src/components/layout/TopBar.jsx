@@ -55,18 +55,10 @@ export default function TopBar({ dark, onThemeToggle, onMobileMenuOpen }) {
     <header className="h-16 flex items-center justify-between px-container-padding bg-surface border-b border-outline-var z-30 sticky top-0 flex-shrink-0">
 
       <div className="flex items-center gap-stack-md flex-1 max-w-xl">
-        {/* Mobile menu button */}
-        <button
-          className="lg:hidden p-2 rounded-lg hover:bg-surface-high text-on-surface-var"
-          onClick={onMobileMenuOpen}
-        >
-          <span className="material-symbols-outlined">menu</span>
-        </button>
-
         {/* Mobile logo — shown only on mobile */}
         <div className="flex items-center gap-2 lg:hidden">
-          <img src="/logo.svg" alt="MiniBazar" className="w-8 h-8" />
-          <span className="text-body-md font-black text-primary">MiniBazar ERP</span>
+          <img src="/logo.png" alt="Mini Manager" className="w-8 h-8" />
+          <span className="text-body-md font-black text-primary">Mini Manager ERP</span>
         </div>
 
         {/* Search bar — desktop */}

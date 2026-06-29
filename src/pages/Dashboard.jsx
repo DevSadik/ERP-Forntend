@@ -30,7 +30,7 @@ export default function Dashboard() {
     <div className="space-y-stack-lg">
       <PageHeader
         title="ড্যাশবোর্ড"
-        subtitle={`MiniBazar ERP পরিচালনার সারসংক্ষেপ — ${format(new Date(), 'dd MMM yyyy')}`}
+        subtitle={`Mini Manager ERP পরিচালনার সারসংক্ষেপ — ${format(new Date(), 'dd MMM yyyy')}`}
         actions={<Button icon="add" size="sm" onClick={() => navigate('/stock-in')}>নতুন এন্ট্রি</Button>}
       />
 

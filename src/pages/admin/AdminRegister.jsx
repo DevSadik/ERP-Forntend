@@ -49,9 +49,9 @@ export default function AdminRegister() {
         className="w-full max-w-sm relative z-10">
 
         <div className="flex flex-col items-center mb-6">
-          <img src="/logo.svg" alt="MiniBazar" className="w-16 h-16 mb-3"
+          <img src="/logo.png" alt="Mini Manager" className="w-16 h-16 mb-3"
             style={{ filter:'drop-shadow(0 0 12px rgba(16,185,129,0.3))' }} />
-          <h1 className="text-headline-sm font-black text-primary">MiniBazar ERP</h1>
+          <h1 className="text-headline-sm font-black text-primary">Mini Manager ERP</h1>
           <p className="text-label-sm text-on-surface-var">Create New Admin User</p>
         </div>
 
@@ -75,7 +75,7 @@ export default function AdminRegister() {
             <div>
               <label className="block text-label-sm font-semibold text-on-surface-var mb-1.5 uppercase tracking-wide">Email *</label>
               <input type="email" value={form.email} onChange={e => set('email', e.target.value)}
-                placeholder="karim@minibazar.com"
+                placeholder="karim@minimanager.com"
                 className={`w-full bg-surface-high border rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all ${errors.email ? 'border-error' : 'border-outline-var'}`} />
               {errors.email && <p className="text-label-sm text-error mt-1">{errors.email}</p>}
             </div>

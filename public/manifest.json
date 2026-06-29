@@ -1,6 +1,6 @@
 {
-  "short_name": "MiniBazar",
-  "name": "MiniBazar ERP",
+  "short_name": "Mini Manager",
+  "name": "Mini Manager ERP",
   "description": "ইনভেন্টরি by Wahidsadik Aditto",
   "icons": [
     { "src": "logo.svg",        "sizes": "any",     "type": "image/svg+xml", "purpose": "any maskable" },

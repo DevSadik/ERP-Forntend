@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 export default function Login() {
   const { login }   = useAuth();
   const navigate    = useNavigate();
-  const [email, setEmail]       = useState('admin@minibazar.com');
+  const [email, setEmail]       = useState('admin@minimanager.com');
   const [password, setPassword] = useState('password123');
   const [loading, setLoading]   = useState(false);
   const [showPass, setShowPass] = useState(false);
@@ -45,14 +45,14 @@ export default function Login() {
             className="mb-4"
           >
             <img
-              src="/logo.svg"
-              alt="MiniBazar ERP"
+              src="/logo.png"
+              alt="Mini Manager ERP"
               className="w-28 h-28 drop-shadow-lg"
               style={{ filter: 'drop-shadow(0 0 20px rgba(16,185,129,0.3))' }}
             />
           </motion.div>
           <h1 className="text-headline-lg font-black text-primary leading-none tracking-tight">
-            MiniBazar ERP
+            Mini Manager ERP
           </h1>
           <p className="text-label-sm text-on-surface-var mt-1">
             ইনভেন্টরি
@@ -71,7 +71,7 @@ export default function Login() {
                 type="email" value={email}
                 onChange={e => setEmail(e.target.value)} required
                 className="w-full bg-surface-high border border-outline-var rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/25 transition-all"
-                placeholder="admin@minibazar.com"
+                placeholder="admin@minimanager.com"
               />
             </div>
             <div>
@@ -105,7 +105,7 @@ export default function Login() {
 
           <div className="mt-6 pt-4 border-t border-outline-var space-y-3">
             <p className="text-label-sm text-on-surface-var text-center">
-              Demo: <span className="text-primary font-semibold">admin@minibazar.com</span> / password123
+              Demo: <span className="text-primary font-semibold">admin@minimanager.com</span> / password123
             </p>
             <div className="text-center">
               <Link to="/shop/login"
@@ -125,8 +125,8 @@ export default function Login() {
         {/* Copyright footer */}
         <div className="mt-6 text-center space-y-1">
           <div className="flex items-center justify-center gap-2">
-            <img src="/logo.svg" alt="logo" className="w-5 h-5 opacity-60" />
-            <span className="text-label-sm text-primary font-semibold">MiniBazar ERP</span>
+            <img src="/logo.png" alt="logo" className="w-5 h-5 opacity-60" />
+            <span className="text-label-sm text-primary font-semibold">Mini Manager ERP</span>
           </div>
           <p className="text-[11px] text-on-surface-var">
             Developed by <span className="font-semibold text-on-surface">Wahidsadik Aditto</span>
