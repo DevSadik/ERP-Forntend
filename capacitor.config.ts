@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.sugarstock.erp',
-  appName: 'SugarStock ERP',
+  appId: 'com.minimanager.erp',
+  appName: 'Mini Manager ERP',
   webDir: 'build',
   bundledWebRuntime: false,
   server: {
@@ -30,7 +30,7 @@ const config: CapacitorConfig = {
       showSpinner: true,
       androidSpinnerStyle: 'large',
       iosSpinnerStyle: 'small',
-      spinnerColor: '#10b981',
+      spinnerColor: '#45a634',
       splashFullScreen: true,
       splashImmersive: true,
     },
@@ -45,7 +45,7 @@ const config: CapacitorConfig = {
     },
     LocalNotifications: {
       smallIcon: 'ic_stat_icon_config_sample',
-      iconColor: '#10b981',
+      iconColor: '#45a634',
     },
   },
 };
