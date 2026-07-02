@@ -8,8 +8,7 @@ import usePageTitle from '../../hooks/usePageTitle';
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
 
 const BUSINESS_TYPES = [
-  'মিষ্টান্ন','বিস্কুট ও কেক','চকোলেট','চিপস ও স্ন্যাকস',
-  'মুদি দোকান','মিষ্টির দোকান','পাইকারি','অন্যান্য',
+    'Super Shop', 'Wholesale Shop', 'Departmental Store', 'Confectionery Shop', 'Others Shop'
 ];
 
 const BLANK = {
