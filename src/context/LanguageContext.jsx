@@ -7,7 +7,7 @@ const STRINGS = {
   bn: {
     dashboard: 'ড্যাশবোর্ড', stockIn: 'স্টক-ইন', sales: 'বিক্রয়',
     inventory: 'ইনভেন্টরি', products: 'পণ্য', productEntry: 'পণ্য এন্ট্রি',
-    creditLedger: 'ক্রেডিট লেজার', settings: 'সেটিংস', logout: 'লগআউট',
+    creditLedger: 'ক্রেডিট লেজার', settings: 'সেটিংস', logout: 'Logout',
     newEntry: 'নতুন এন্ট্রি', search: 'খুঁজুন', save: 'সংরক্ষণ করুন',
     cancel: 'বাতিল', delete: 'মুছুন', edit: 'সম্পাদনা', add: 'যোগ করুন',
     todaySales: 'আজকের বিক্রয়', todayOrders: 'আজকের অর্ডার',

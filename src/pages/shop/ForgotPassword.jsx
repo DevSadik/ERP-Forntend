@@ -8,22 +8,26 @@ const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
-  const [phone, setPhone]     = useState('');
-  const [loading, setLoading] = useState(false);
+  const [phone, setPhone]       = useState('');
+  const [loading, setLoading]   = useState(false);
+  const [submitted, setSubmitted] = useState(false); // double-submit guard
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitted || loading) return; // Android double-tap guard
     const clean = phone.replace(/[^0-9]/g, '');
     if (clean.length < 11) return toast.error('সঠিক মোবাইল নম্বর দিন।');
     setLoading(true);
+    setSubmitted(true);
     try {
       await axios.post(`${API}/shop/forgot-password`, { phone: clean });
       toast.success('আপনার মোবাইলে OTP পাঠানো হয়েছে।');
-      // Go to reset page with phone
-      navigate('/shop/reset-password', { state: { phone: clean } });
+      // Use URL query param (works on Android/Capacitor, unlike location.state)
+      navigate(`/shop/reset-password?phone=${encodeURIComponent(clean)}`);
     } catch (err) {
       toast.error(err.response?.data?.message || 'OTP পাঠানো ব্যর্থ।');
       setLoading(false);
+      setSubmitted(false);
     }
   };
 
@@ -36,7 +40,7 @@ export default function ForgotPassword() {
 
         <div className="flex flex-col items-center mb-8">
           <img src="/logo.png" alt="Mini Manager" className="w-20 h-20 mb-3"
-            style={{ filter:'drop-shadow(0 0 16px rgba(16,185,129,0.3))' }} />
+            style={{ filter:'drop-shadow(0 0 16px rgba(69,166,52,0.3))' }} />
           <h1 className="text-headline-md font-black text-primary">Mini Manager ERP</h1>
         </div>
 
@@ -58,7 +62,7 @@ export default function ForgotPassword() {
                 placeholder="01XXXXXXXXX" inputMode="numeric"
                 className="w-full bg-surface-high border border-outline-var rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/25 transition-all" />
             </div>
-            <motion.button type="submit" whileTap={{ scale:.97 }} disabled={loading}
+            <motion.button type="submit" whileTap={{ scale:.97 }} disabled={loading || submitted}
               className="w-full bg-primary text-white font-bold rounded-xl py-3.5 flex items-center justify-center gap-2 shadow-primary-glow hover:brightness-110 disabled:opacity-50 transition-all">
               {loading
                 ? <><span className="material-symbols-outlined !text-[18px] animate-spin">progress_activity</span>পাঠানো হচ্ছে…</>

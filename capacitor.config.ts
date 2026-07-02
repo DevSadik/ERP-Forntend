@@ -6,10 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'build',
   bundledWebRuntime: false,
   server: {
-    // For development: point to your backend IP on your local network
-    // Change this to your computer's local IP address (e.g. 192.168.1.10)
-    // For production build: remove the androidScheme and url lines below
-    androidScheme: 'http',
+    androidScheme: 'https',
   },
   android: {
     buildOptions: {
@@ -46,6 +43,16 @@ const config: CapacitorConfig = {
     LocalNotifications: {
       smallIcon: 'ic_stat_icon_config_sample',
       iconColor: '#45a634',
+    },
+    Camera: {
+      permissions: ['camera'],
+    },
+    Permissions: {
+      permissions: [
+        'camera',
+        'photos',
+        'notifications',
+      ],
     },
   },
 };

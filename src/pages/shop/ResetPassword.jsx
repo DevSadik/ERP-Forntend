@@ -8,19 +8,24 @@ import toast from 'react-hot-toast';
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
 
 export default function ResetPassword() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate  = useNavigate();
+  const location  = useLocation();
   const { saveVerifiedSession } = useShopAuth();
 
-  const phone = location.state?.phone || new URLSearchParams(location.search).get('phone') || '';
+  // Read phone from URL query param first (Android/Capacitor safe)
+  // Fall back to location.state for web browser
+  const phone = new URLSearchParams(location.search).get('phone')
+    || location.state?.phone
+    || '';
 
-  const [otp, setOtp]         = useState(['', '', '', '', '', '']);
-  const [password, setPassword]       = useState('');
-  const [confirm, setConfirm]         = useState('');
-  const [showPass, setShowPass]       = useState(false);
-  const [loading, setLoading]         = useState(false);
-  const [resending, setResending]     = useState(false);
-  const [seconds, setSeconds]         = useState(60);
+  const [otp, setOtp]             = useState(['', '', '', '', '', '']);
+  const [password, setPassword]   = useState('');
+  const [confirm, setConfirm]     = useState('');
+  const [showPass, setShowPass]   = useState(false);
+  const [loading, setLoading]     = useState(false);
+  const [submitted, setSubmitted] = useState(false); // double-tap guard
+  const [resending, setResending] = useState(false);
+  const [seconds, setSeconds]     = useState(60);
   const inputs = useRef([]);
 
   useEffect(() => {
@@ -31,6 +36,14 @@ export default function ResetPassword() {
 
   useEffect(() => { inputs.current[0]?.focus(); }, []);
 
+  // Phone missing guard — go back
+  useEffect(() => {
+    if (!phone) {
+      toast.error('ফোন নম্বর পাওয়া যায়নি। আবার চেষ্টা করুন।');
+      navigate('/shop/forgot-password', { replace: true });
+    }
+  }, [phone, navigate]);
+
   const handleChange = (i, val) => {
     if (!/^\d*$/.test(val)) return;
     const next = [...otp];
@@ -38,9 +51,11 @@ export default function ResetPassword() {
     setOtp(next);
     if (val && i < 5) inputs.current[i + 1]?.focus();
   };
+
   const handleKeyDown = (i, e) => {
     if (e.key === 'Backspace' && !otp[i] && i > 0) inputs.current[i - 1]?.focus();
   };
+
   const handlePaste = (e) => {
     e.preventDefault();
     const p = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 6);
@@ -48,11 +63,15 @@ export default function ResetPassword() {
   };
 
   const handleSubmit = async () => {
+    if (submitted || loading) return; // Android double-tap guard
     const code = otp.join('');
-    if (code.length !== 6)        return toast.error('৬ সংখ্যার OTP দিন।');
-    if (password.length < 6)      return toast.error('পাসওয়ার্ড কমপক্ষে ৬ অক্ষর।');
-    if (password !== confirm)     return toast.error('পাসওয়ার্ড মিলছে না।');
+    if (code.length !== 6)    return toast.error('৬ সংখ্যার OTP দিন।');
+    if (password.length < 6)  return toast.error('পাসওয়ার্ড কমপক্ষে ৬ অক্ষর।');
+    if (password !== confirm)  return toast.error('পাসওয়ার্ড মিলছে না।');
+    if (!phone)                return toast.error('ফোন নম্বর নেই — আবার শুরু করুন।');
+
     setLoading(true);
+    setSubmitted(true);
     try {
       const { data } = await axios.post(`${API}/shop/reset-password`, {
         phone, otp: code, password,
@@ -65,16 +84,19 @@ export default function ResetPassword() {
     } catch (err) {
       toast.error(err.response?.data?.message || 'রিসেট ব্যর্থ।');
       setLoading(false);
+      setSubmitted(false);
     }
   };
 
   const handleResend = async () => {
+    if (resending || !phone) return;
     setResending(true);
     try {
       await axios.post(`${API}/shop/forgot-password`, { phone });
       toast.success('নতুন OTP পাঠানো হয়েছে।');
       setSeconds(60);
       setOtp(['', '', '', '', '', '']);
+      setSubmitted(false);
       inputs.current[0]?.focus();
     } catch { toast.error('পাঠানো ব্যর্থ।'); }
     setResending(false);
@@ -89,7 +111,7 @@ export default function ResetPassword() {
 
         <div className="flex flex-col items-center mb-8">
           <img src="/logo.png" alt="Mini Manager" className="w-20 h-20 mb-3"
-            style={{ filter:'drop-shadow(0 0 16px rgba(16,185,129,0.3))' }} />
+            style={{ filter:'drop-shadow(0 0 16px rgba(69,166,52,0.3))' }} />
           <h1 className="text-headline-md font-black text-primary">Mini Manager ERP</h1>
         </div>
 
@@ -104,7 +126,6 @@ export default function ResetPassword() {
             </p>
           </div>
 
-          {/* SMS delivery notice */}
           <div className="bg-primary/8 border border-primary/15 rounded-xl px-4 py-2.5 mb-4 flex items-start gap-2">
             <span className="material-symbols-outlined !text-[16px] text-primary mt-0.5 flex-shrink-0">info</span>
             <p className="text-label-sm text-on-surface-var text-left leading-relaxed">
@@ -112,7 +133,7 @@ export default function ResetPassword() {
             </p>
           </div>
 
-          {/* OTP */}
+          {/* OTP input */}
           <label className="block text-label-sm font-semibold text-on-surface-var mb-2 uppercase tracking-wide">OTP কোড</label>
           <div className="flex justify-center gap-2 mb-4" onPaste={handlePaste}>
             {otp.map((d, i) => (
@@ -140,7 +161,8 @@ export default function ResetPassword() {
               className="w-full bg-surface-high border border-outline-var rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/25 transition-all" />
           </div>
 
-          <motion.button whileTap={{ scale:.97 }} onClick={handleSubmit} disabled={loading}
+          <motion.button whileTap={{ scale:.97 }} onClick={handleSubmit}
+            disabled={loading || submitted}
             className="w-full bg-primary text-white font-bold rounded-xl py-3.5 flex items-center justify-center gap-2 shadow-primary-glow hover:brightness-110 disabled:opacity-50 transition-all">
             {loading
               ? <><span className="material-symbols-outlined !text-[18px] animate-spin">progress_activity</span>পরিবর্তন হচ্ছে…</>

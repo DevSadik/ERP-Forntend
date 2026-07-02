@@ -71,7 +71,7 @@ export default function SupplierLayout() {
             <p className="text-label-md font-semibold text-on-surface truncate">{brand?.companyName}</p>
             <p className="text-label-sm text-on-surface-var">সাপ্লায়ার</p>
           </div>
-          <button onClick={logout} className="p-1.5 text-on-surface-var hover:text-error transition-colors rounded-lg" title="লগআউট">
+          <button onClick={logout} className="p-1.5 text-on-surface-var hover:text-error transition-colors rounded-lg" title="Logout">
             <span className="material-symbols-outlined !text-[18px]">logout</span>
           </button>
         </div>

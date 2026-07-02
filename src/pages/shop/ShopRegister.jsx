@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
 
@@ -17,6 +18,7 @@ const BLANK = {
 };
 
 export default function ShopRegister() {
+  usePageTitle('রেজিস্টার', 'Mini Manager ERP-তে বিনামূল্যে রেজিস্টার করুন — ৩০ দিন ফ্রি ট্রায়াল। দোকানের স্টক ও হিসাব সহজে ম্যানেজ করুন।');
   const navigate   = useNavigate();
   const [step, setStep]         = useState(1);
   const [form, setForm]         = useState(BLANK);

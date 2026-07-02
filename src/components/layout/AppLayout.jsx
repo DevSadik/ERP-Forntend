@@ -269,7 +269,7 @@ function MoreMenu({ logout, navigate, user, isShop, lang }) {
                 <button onClick={() => { logout(); setOpen(false); }}
                   className="w-full flex items-center gap-3 px-stack-md py-stack-sm rounded-xl hover:bg-error/10 transition-colors text-error mt-2">
                   <span className="material-symbols-outlined !text-[20px]">logout</span>
-                  <span className="text-body-md font-medium">লগআউট</span>
+                  <span className="text-body-md font-medium">Logout</span>
                 </button>
               </div>
               {/* Copyright in mobile menu */}

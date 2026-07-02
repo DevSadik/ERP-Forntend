@@ -1,0 +1,15 @@
+# Mini Manager ERP — robots.txt
+User-agent: *
+Allow: /
+# Private app areas (behind login) — no SEO value, keep crawlers out
+Disallow: /dashboard
+Disallow: /stock-in
+Disallow: /stock-out
+Disallow: /sales
+Disallow: /inventory
+Disallow: /products
+Disallow: /admin
+Disallow: /profile
+Disallow: /settings
+
+Sitemap: https://erp-forntend-ruddy.vercel.app/sitemap.xml

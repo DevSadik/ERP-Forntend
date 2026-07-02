@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useShopAuth } from '../../context/ShopAuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import toast from 'react-hot-toast';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function ShopLogin() {
+  usePageTitle('লগইন', 'Mini Manager ERP-তে লগইন করে আপনার দোকানের স্টক, বিক্রি ও হিসাব ম্যানেজ করুন।');
   const { login }   = useShopAuth();
   const { lang }    = useLanguage();
   const navigate    = useNavigate();

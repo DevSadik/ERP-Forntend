@@ -10,7 +10,8 @@ import { format } from 'date-fns';
 const API_BASE = process.env.REACT_APP_API_URL?.replace('/api/v1', '') || 'http://localhost:5000';
 
 const BUSINESS_TYPES = [
- 'Wholesale Shop', 'Super Shop', 'Confectionery Shop', 'Genarel Shop', 'Departmental Store', 'Others'
+  'মিষ্টান্ন', 'বিস্কুট ও কেক', 'চকোলেট', 'চিপস ও স্ন্যাকস',
+  'মুদি দোকান', 'মিষ্টির দোকান', 'পাইকারি', 'অন্যান্য',
 ];
 
 export default function ShopProfile() {
@@ -43,6 +44,35 @@ export default function ShopProfile() {
     ? Math.max(0, Math.ceil((new Date(shop.trialEnds) - new Date()) / (1000 * 60 * 60 * 24)))
     : 0;
   const isTrialExpired = shop?.plan === 'trial' && trialDaysLeft <= 0;
+
+  // ── Subscription purchase (bKash online + manual fallback) ──
+  const [planModal, setPlanModal] = useState(false);
+  const [buying, setBuying] = useState(false);
+  const [plansInfo, setPlansInfo] = useState(null);
+
+  const openPlans = async () => {
+    setPlanModal(true);
+    try {
+      const res = await shopApi.get('/payment/plans');
+      setPlansInfo(res.data.data);
+    } catch {
+      setPlansInfo({ onlinePayment: false, manualNumber: '01844815121', plans: {} });
+    }
+  };
+
+  const buyPlan = async (planKey) => {
+    setBuying(true);
+    try {
+      const res = await shopApi.post('/payment/start', { planKey });
+      const url = res.data?.data?.bkashURL;
+      if (url) { window.location.href = url; return; }   // go to bKash page
+      toast.error('পেমেন্ট শুরু করা যায়নি।');
+    } catch (e) {
+      toast.error(e.response?.data?.message || 'অনলাইন পেমেন্ট এখন বন্ধ। ম্যানুয়াল পেমেন্ট করুন।');
+    } finally {
+      setBuying(false);
+    }
+  };
 
   // Profile update
   const profileMutation = useMutation({
@@ -146,7 +176,7 @@ export default function ShopProfile() {
         <button onClick={logout}
           className="flex-shrink-0 flex items-center gap-1.5 text-label-md text-on-surface-var hover:text-error border border-outline-var hover:border-error rounded-xl px-3 py-2 transition-all">
           <span className="material-symbols-outlined !text-[18px]">logout</span>
-          <span className="hidden sm:inline">লগআউট</span>
+          <span className="hidden sm:inline">Logout</span>
         </button>
       </motion.div>
 
@@ -156,14 +186,78 @@ export default function ShopProfile() {
           <span className="material-symbols-outlined text-error !text-[24px]">warning</span>
           <div className="flex-1">
             <p className="text-body-md font-bold text-error">ট্রায়াল মেয়াদ শেষ হয়েছে</p>
-            <p className="text-label-sm text-on-surface-var">সাবস্ক্রিপশন কিনতে যোগাযোগ করুন:</p>
-            <a href="tel:01844815121" className="text-label-sm font-bold text-error hover:underline inline-flex items-center gap-1 mt-0.5">
-              <span className="material-symbols-outlined !text-[14px]">call</span>
-              01844815121
-            </a>
+            <p className="text-label-sm text-on-surface-var">এখনই সাবস্ক্রিপশন কিনে চালিয়ে যান।</p>
           </div>
+          <button onClick={openPlans}
+            className="bg-primary text-white font-bold rounded-xl px-4 py-2 text-label-md hover:brightness-110 transition-all whitespace-nowrap">
+            সাবস্ক্রিপশন কিনুন
+          </button>
         </div>
       )}
+
+      {/* Buy/Renew button for active users too */}
+      {!isTrialExpired && (
+        <button onClick={openPlans}
+          className="w-full sm:w-auto bg-primary/10 border border-primary/30 text-primary font-bold rounded-xl px-4 py-2.5 text-label-md hover:bg-primary/20 transition-all flex items-center justify-center gap-2">
+          <span className="material-symbols-outlined !text-[18px]">workspace_premium</span>
+          {shop?.plan === 'trial' ? 'Pro-তে আপগ্রেড করুন' : 'সাবস্ক্রিপশন নবায়ন করুন'}
+        </button>
+      )}
+
+      {/* ── Plan selection modal ── */}
+      <AnimatePresence>
+        {planModal && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-4"
+            onClick={() => setPlanModal(false)}>
+            <motion.div initial={{ y: 40 }} animate={{ y: 0 }} exit={{ y: 40 }}
+              onClick={e => e.stopPropagation()}
+              className="bg-surface rounded-2xl p-5 w-full max-w-md max-h-[85vh] overflow-y-auto">
+              <h3 className="text-title-lg font-black text-on-surface mb-1">সাবস্ক্রিপশন প্ল্যান</h3>
+              <p className="text-label-sm text-on-surface-var mb-4">আপনার দোকানের জন্য একটি প্ল্যান বেছে নিন।</p>
+
+              {!plansInfo ? (
+                <p className="text-center py-8 text-on-surface-var">লোড হচ্ছে…</p>
+              ) : (
+                <>
+                  <div className="space-y-2">
+                    {Object.entries(plansInfo.plans || {}).map(([key, p]) => (
+                      <div key={key} className="flex items-center justify-between bg-surface-high rounded-xl p-3 border border-outline-var">
+                        <div>
+                          <p className="text-body-md font-bold text-on-surface">{p.label}</p>
+                          <p className="text-label-sm text-primary font-black">৳{p.price}</p>
+                        </div>
+                        <button onClick={() => buyPlan(key)} disabled={buying}
+                          className="bg-primary text-white font-bold rounded-lg px-4 py-2 text-label-sm hover:brightness-110 disabled:opacity-50 transition-all">
+                          {plansInfo.onlinePayment ? 'bKash-এ কিনুন' : 'কিনুন'}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Manual payment fallback — always shown */}
+                  <div className="mt-4 pt-4 border-t border-outline-var">
+                    <p className="text-label-sm font-bold text-on-surface mb-1">📲 ম্যানুয়াল পেমেন্ট (bKash)</p>
+                    <p className="text-label-sm text-on-surface-var leading-relaxed">
+                      এই নম্বরে <b>Send Money</b> করুন, তারপর transaction ID সহ কল/SMS দিন।
+                      আমরা আপনার সাবস্ক্রিপশন চালু করে দেব।
+                    </p>
+                    <a href="tel:01844815121" className="text-body-md font-black text-primary inline-flex items-center gap-1 mt-1">
+                      <span className="material-symbols-outlined !text-[16px]">call</span>
+                      01844815121
+                    </a>
+                  </div>
+                </>
+              )}
+
+              <button onClick={() => setPlanModal(false)}
+                className="w-full mt-4 bg-surface-high text-on-surface-var font-bold rounded-xl py-2.5 text-label-md">
+                বন্ধ করুন
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Tabs ── */}
       <div className="flex gap-1 bg-surface-high p-1 rounded-xl w-fit">
@@ -343,10 +437,10 @@ export default function ShopProfile() {
             {/* Danger zone */}
             <div className="mt-4 pt-4 border-t border-outline-var">
               <p className="text-label-sm text-on-surface-var mb-3 font-semibold uppercase tracking-wide">অ্যাকাউন্ট</p>
-              <button onClick={() => { if (window.confirm('লগআউট করবেন?')) logout(); }}
+              <button onClick={() => logout()}
                 className="flex items-center gap-2 text-error border border-error/30 rounded-xl px-4 py-2.5 hover:bg-error/10 transition-all text-body-md font-semibold">
                 <span className="material-symbols-outlined !text-[18px]">logout</span>
-                লগআউট করুন
+                Logout
               </button>
             </div>
           </motion.div>

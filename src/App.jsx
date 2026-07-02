@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 
@@ -24,6 +24,7 @@ import Settings          from './pages/Settings';
 
 // ── Shop App ──────────────────────────────────────────────────────────────────
 import AppLayout      from './components/layout/AppLayout';
+import LandingPage    from './pages/LandingPage';
 import Dashboard      from './pages/Dashboard';
 import StockIn        from './pages/StockIn';
 import Sales          from './pages/Sales';
@@ -63,10 +64,22 @@ function AdminRoute({ children }) {
   return children;
 }
 
-function ShopRoute({ children }) {
-  const { token: shopToken }  = useShopAuth();
-  if (shopToken) return children;
-  return <Navigate to="/shop/login" replace />;
+// Root ("/") needs to behave differently for logged-out visitors vs logged-in
+// shop users — WITHOUT changing any existing nav links or routes:
+//  • Logged out + exactly "/"      → public LandingPage (real content for SEO/Google)
+//  • Logged out + any other path   → redirect to /shop/login (same as before)
+//  • Logged in                     → AppLayout + Dashboard etc. (unchanged)
+function RootGate() {
+  const { token: shopToken } = useShopAuth();
+  const location = useLocation();
+  if (!shopToken) {
+    // Web browser visiting exactly "/" → show Landing Page (SEO)
+    // Android app or any other path → go to login
+    const isAndroid = window.Capacitor !== undefined;
+    if (!isAndroid && location.pathname === '/') return <LandingPage />;
+    return <Navigate to="/shop/login" replace />;
+  }
+  return <AppLayout />;
 }
 
 function SupplierPrivateRoute({ children }) {
@@ -124,7 +137,7 @@ export default function App() {
                     <Route path="/shop/verify-otp"         element={<VerifyOtp />} />
                     <Route path="/ledger/public/:token"    element={<PublicLedger />} />
 
-                    <Route path="/" element={<ShopRoute><AppLayout /></ShopRoute>}>
+                    <Route path="/" element={<RootGate />}>
                       <Route index                element={<Dashboard />} />
                       <Route path="stock-in"      element={<StockIn />} />
                       <Route path="sales"         element={<Sales />} />

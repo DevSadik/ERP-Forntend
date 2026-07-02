@@ -19,7 +19,7 @@ export default function Settings() {
   const [company, setCompany] = useState({
     name: 'Mini Manager BD Ltd.',
     email: 'admin@minimanager.com',
-    phone: '+8801844815121',
+    phone: '+880-1700-000000',
     currency: 'BDT',
   });
   const [savingCompany, setSavingCompany] = useState(false);
